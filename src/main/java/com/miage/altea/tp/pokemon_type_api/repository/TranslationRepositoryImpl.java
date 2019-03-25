@@ -2,6 +2,7 @@ package com.miage.altea.tp.pokemon_type_api.repository;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.miage.altea.tp.pokemon_type_api.bo.PokemonType;
 import com.miage.altea.tp.pokemon_type_api.bo.Translation;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
@@ -22,10 +23,10 @@ public class TranslationRepositoryImpl implements TranslationRepository {
         try {
             var objectMapper = new ObjectMapper();
 
-            var frenchTranslationStream = new ClassPathResource("translations-fr.json").getInputStream();
+            var frenchTranslationStream = new ClassPathResource("pokemon-fr.json").getInputStream();
             var frenchTranslationsArray = objectMapper.readValue(frenchTranslationStream, Translation[].class);
 
-            var englishTranslationStream = new ClassPathResource("translations-en.json").getInputStream();
+            var englishTranslationStream = new ClassPathResource("pokemon-en.json").getInputStream();
             var englishTranslationsArray = objectMapper.readValue(englishTranslationStream, Translation[].class);
 
             this.translations = Map.of(
@@ -42,7 +43,7 @@ public class TranslationRepositoryImpl implements TranslationRepository {
     @Override
     public String getPokemonName(int id, Locale locale) {
 
-        return "hello";
+        return "TO DO";
 
     }
 }

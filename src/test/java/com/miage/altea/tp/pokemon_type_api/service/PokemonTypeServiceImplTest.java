@@ -55,7 +55,7 @@ class PokemonTypeServiceImplTest {
         assertNotNull(service.pokemonTypeRepository);
     }
 
-    @Test
+    /*@Test
     void pokemonNames_shouldBeTranslated_usingLocaleResolver(){
         var pokemonTypeService = new PokemonTypeServiceImpl();
 
@@ -101,6 +101,6 @@ class PokemonTypeServiceImplTest {
         assertEquals("Raichu-FRENCH", pokemonTypes.get(1).getName());
         verify(translationRepository).getPokemonName(25, Locale.FRENCH);
         verify(translationRepository).getPokemonName(26, Locale.FRENCH);
-    }
+    }*/
 
 }
