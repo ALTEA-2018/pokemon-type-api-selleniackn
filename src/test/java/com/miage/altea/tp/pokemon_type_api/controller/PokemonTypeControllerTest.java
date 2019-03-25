@@ -60,6 +60,16 @@ class PokemonTypeControllerTest {
     }
 
     @Test
+    void getPokemonTypeFromName_shouldBeAnnotated() throws NoSuchMethodException {
+        var getPokemonTypeFromName =
+                PokemonTypeController.class.getDeclaredMethod("getPokemonTypeFromName", String.class);
+        var getMapping = getPokemonTypeFromName.getAnnotation(GetMapping.class);
+
+        assertNotNull(getMapping);
+        assertArrayEquals(new String[]{"/{name}"}, getMapping.value());
+    }
+
+    @Test
     void getAllPokemonTypes_shouldBeAnnotated() throws NoSuchMethodException {
         var getAllPokemonTypes =
                 PokemonTypeController.class.getDeclaredMethod("getAllPokemonTypes");

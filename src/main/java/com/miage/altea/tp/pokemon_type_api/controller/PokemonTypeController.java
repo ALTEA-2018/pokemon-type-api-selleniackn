@@ -32,6 +32,14 @@ class PokemonTypeController {
         return listPoke;
 
     }
+    @GetMapping(value = "/{name}")
+    PokemonType getPokemonTypeFromName(String name){
+        PokemonType pokeName = service.getPokemonTypeByName(name);
+        return pokeName;
+
+    }
+
+
 }
 
 

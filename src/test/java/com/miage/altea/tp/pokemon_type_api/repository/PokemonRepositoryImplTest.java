@@ -18,13 +18,27 @@ class PokemonTypeRepositoryImplTest {
     }
 
     @Test
+    void findPokemonTypeByName_withPikachu_shouldReturnpikachu(){
+        var pikachu = repository.findPokemonTypeByName("pikachu");
+        assertNotNull(pikachu);
+        assertEquals("pikachu", pikachu.getName());
+
+    }
+    @Test
+    void findPokemonTypeByName_withMew_shouldReturnMew(){
+        var mew = repository.findPokemonTypeByName("mew");
+        assertNotNull(mew);
+        assertEquals("mew", mew.getName());
+
+    }
+
+    @Test
     void findPokemonTypeById_with145_shouldReturnZapdos(){
         var zapdos = repository.findPokemonTypeById(145);
         assertNotNull(zapdos);
         assertEquals("zapdos", zapdos.getName());
         assertEquals(145, zapdos.getId());
     }
-
     @Test
     void findPokemonTypeByName_withEevee_shouldReturnEevee(){
         var eevee = repository.findPokemonTypeByName("eevee");
