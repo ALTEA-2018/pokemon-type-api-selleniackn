@@ -21,7 +21,8 @@ class PokemonTypeServiceImplTest {
     @Test
     void pokemonTypeRepository_shouldBeCalled_whenFindById(){
         var pokemonTypeRepository = mock(PokemonTypeRepository.class);
-        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository);
+        var translationRepository = mock(TranslationRepository.class);
+        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository,translationRepository);
 
         pokemonTypeService.getPokemonType(25);
 
@@ -31,7 +32,8 @@ class PokemonTypeServiceImplTest {
     @Test
     void pokemonTypeRepository_shouldBeCalled_whenFindAll(){
         var pokemonTypeRepository = mock(PokemonTypeRepository.class);
-        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository);
+        var translationRepository = mock(TranslationRepository.class);
+        var pokemonTypeService = new PokemonTypeServiceImpl(pokemonTypeRepository,translationRepository);
 
         pokemonTypeService.getAllPokemonTypes();
 
@@ -55,7 +57,7 @@ class PokemonTypeServiceImplTest {
         assertNotNull(service.pokemonTypeRepository);
     }
 
-    /*@Test
+    @Test
     void pokemonNames_shouldBeTranslated_usingLocaleResolver(){
         var pokemonTypeService = new PokemonTypeServiceImpl();
 
@@ -91,7 +93,7 @@ class PokemonTypeServiceImplTest {
         var translationRepository = mock(TranslationRepository.class);
         pokemonTypeService.setTranslationRepository(translationRepository);
         when(translationRepository.getPokemonName(25, Locale.FRENCH)).thenReturn("Pikachu-FRENCH");
-        when((translationRepository.getPokemonName(26, Locale.FRENCH)).thenReturn("Raichu-FRENCH"));
+        when(translationRepository.getPokemonName(26, Locale.FRENCH)).thenReturn("Raichu-FRENCH");
 
         LocaleContextHolder.setLocale(Locale.FRENCH);
 
@@ -101,6 +103,6 @@ class PokemonTypeServiceImplTest {
         assertEquals("Raichu-FRENCH", pokemonTypes.get(1).getName());
         verify(translationRepository).getPokemonName(25, Locale.FRENCH);
         verify(translationRepository).getPokemonName(26, Locale.FRENCH);
-    }*/
+    }
 
 }

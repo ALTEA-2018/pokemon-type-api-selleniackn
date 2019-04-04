@@ -3,6 +3,7 @@ package com.miage.altea.tp.pokemon_type_api.service;
 import com.miage.altea.tp.pokemon_type_api.bo.PokemonType;
 import com.miage.altea.tp.pokemon_type_api.repository.PokemonTypeRepository;
 import com.miage.altea.tp.pokemon_type_api.repository.PokemonTypeRepositoryImpl;
+import com.miage.altea.tp.pokemon_type_api.repository.TranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,15 @@ import java.util.List;
 public class PokemonTypeServiceImpl implements PokemonTypeService{
     @Autowired
     public  PokemonTypeRepository pokemonTypeRepository;
+    public TranslationRepository translationRepository;
 
-    public PokemonTypeServiceImpl(PokemonTypeRepository pokemonTypeRepository){
+    public PokemonTypeServiceImpl(PokemonTypeRepository pokemonTypeRepository,TranslationRepository translationRepository){
        this.pokemonTypeRepository = pokemonTypeRepository;
+        this.translationRepository =translationRepository;
+    }
+
+    public PokemonTypeServiceImpl() {
+
     }
 
     @Override
@@ -33,5 +40,14 @@ public class PokemonTypeServiceImpl implements PokemonTypeService{
     public List<PokemonType> getAllPokemonTypes(){
         List<PokemonType> listPokemon = pokemonTypeRepository.findAllPokemonType();
         return listPokemon;
+    }
+
+
+
+    public void setPokemonTypeRepository(PokemonTypeRepository pokemonTypeRepository) {
+        this.pokemonTypeRepository = pokemonTypeRepository;
+    }
+    public void setTranslationRepository(TranslationRepository translationRepository){
+        this.translationRepository = translationRepository;
     }
 }

@@ -42,8 +42,9 @@ public class TranslationRepositoryImpl implements TranslationRepository {
 
     @Override
     public String getPokemonName(int id, Locale locale) {
-
-        return "TO DO";
-
+        if (locale != null)
+        return translations.get(locale).stream().filter(Translation -> Translation.getId() == id).findFirst().get().getName();
+        else
+            return defaultTranslations.stream().filter(Translation -> Translation.getId() == id).findFirst().get().getName();
     }
 }
